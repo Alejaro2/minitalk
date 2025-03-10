@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejaro2 <alejaro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/28 12:14:50 by alejaro2          #+#    #+#             */
-/*   Updated: 2024/10/14 20:00:33 by alejaro2         ###   ########.fr       */
+/*   Created: 2024/11/26 17:30:30 by alejaro2          #+#    #+#             */
+/*   Updated: 2024/11/26 19:26:16 by alejaro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-size_t	ft_strlen(const char *str)
+int	ft_print_char(char c)
 {
-	size_t	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
+	write(1, &c, 1);
+	return (1);
 }
-
-/*int main(void)
-{
-	const char *str = "hola";
-	size_t test;
-	test = ft_strlen(str);
-	printf("%zu\n",  test);
-}*/

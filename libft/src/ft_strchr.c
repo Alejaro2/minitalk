@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejaro2 <alejaro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/06 12:48:35 by alejaro2          #+#    #+#             */
-/*   Updated: 2025/03/10 09:52:41 by alejaro2         ###   ########.fr       */
+/*   Created: 2024/10/07 20:44:34 by alejaro2          #+#    #+#             */
+/*   Updated: 2024/11/17 15:08:05 by alejaro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
+#include "libft.h"
 
-# define MINITALK_H
-# define TIMEOUT 300000
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s != '\0')
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
+	}
+	if ((char)c == '\0')
+		return ((char *)s);
+	return (NULL);
+}
 
-# include <unistd.h>
-# include <signal.h>
-# include "../libft/ft_printf/include/ft_printf.h"
-# include "../libft/include/libft.h"
+/*int main (void)
+{
+	char p [] = "hola";
+	int c = 'o';
 
-#endif
+	printf("resultado %s", ft_strchr(p, c));
+}*/ 

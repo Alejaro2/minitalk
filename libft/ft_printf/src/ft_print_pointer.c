@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_print_pointer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejaro2 <alejaro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/06 12:48:35 by alejaro2          #+#    #+#             */
-/*   Updated: 2025/03/10 09:52:41 by alejaro2         ###   ########.fr       */
+/*   Created: 2024/11/26 17:33:08 by alejaro2          #+#    #+#             */
+/*   Updated: 2024/11/26 19:32:53 by alejaro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
+#include "ft_printf.h"
 
-# define MINITALK_H
-# define TIMEOUT 300000
+int	ft_print_pointer(void *c)
+{
+	int		count;
+	size_t	n;
 
-# include <unistd.h>
-# include <signal.h>
-# include "../libft/ft_printf/include/ft_printf.h"
-# include "../libft/include/libft.h"
-
-#endif
+	count = 0;
+	if (c == 0)
+		count += ft_print_str("(nil)");
+	else
+	{
+		count += ft_print_str("0x");
+		n = (size_t)c;
+		count += ft_print_hexadecimal(n, 'x');
+	}
+	return (count);
+}

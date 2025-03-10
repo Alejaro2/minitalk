@@ -1,44 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejaro2 <alejaro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 17:24:55 by alejaro2          #+#    #+#             */
-/*   Updated: 2024/10/14 20:07:04 by alejaro2         ###   ########.fr       */
+/*   Created: 2024/11/26 17:33:15 by alejaro2          #+#    #+#             */
+/*   Updated: 2024/11/26 19:27:04 by alejaro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+int	ft_print_str(char *str)
 {
-	size_t	i;
-	size_t	j;
+	int	count;
 
-	i = 0;
-	j = 0;
-	while (src[j] != '\0')
-		j++;
-	if (size > 0)
+	count = 0;
+	if (!str)
+		str = "(null)";
+	while (*str)
 	{
-		while (i < size - 1 && src[i] != '\0')
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
+		count += ft_print_char(*str);
+		str++;
 	}
-	return (j);
+	return (count);
 }
-
-/*int main (void)
-{
-	char	src[] = "holamundo";
-	char	dst[20];
-
-	ft_strlcpy(dst, src, sizeof(dst));
-	printf("resultado %s", dst);
-}
-*/

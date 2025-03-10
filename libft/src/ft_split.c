@@ -6,7 +6,7 @@
 /*   By: alejaro2 <alejaro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:41:01 by alejaro2          #+#    #+#             */
-/*   Updated: 2025/02/07 10:47:58 by alejaro2         ###   ########.fr       */
+/*   Updated: 2025/03/06 12:50:36 by alejaro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,17 +84,19 @@ char	**ft_split(char const *s, char c)
 	return (result);
 }
 
-//  int	main(void)
-// {
-// 	char s[] = "ho   la com o esta s bien";
-// 	char **res = ft_split(s, ' ');
-// 	if (res != NULL)
-// 	{
-// 		int i = 0;
-// 		while (res[i])
-// 		{
-// 			printf("%s\n", res[i]);
-// 			i++;
-// 		}
-// 	}
-// } 
+/*int	main(void)
+{
+	char s[] = "hola como estas bien";
+	char c = ' ';
+	char **res = ft_split(s, c);
+	
+	if (res != NULL)
+	{
+		int i = 0;
+		while (res[i])
+		{
+			printf("%s\n", res[i]);
+			i++;
+		}
+	}
+}*/

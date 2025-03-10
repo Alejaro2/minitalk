@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejaro2 <alejaro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 17:14:39 by alejaro2          #+#    #+#             */
-/*   Updated: 2025/03/04 11:05:25 by alejaro2         ###   ########.fr       */
+/*   Created: 2024/11/26 17:33:27 by alejaro2          #+#    #+#             */
+/*   Updated: 2024/11/26 19:27:00 by alejaro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-void	ft_putstr(char *s)
-{
-	while (*s)
-		write(2, (s++), 1);
-}
-/*int main()
-{
-	char p[] = "holartf";
-	int fd = open("prueba", O_CREAT | O_WRONLY, 0777);
-	ft_putstr_fd(p, fd);
-}*/
+# include <stdarg.h>
+# include <stddef.h>
+# include <unistd.h>
+
+int	ft_printf(const char *str, ...);
+int	ft_print_char(char c);
+int	ft_print_str(char *str);
+int	ft_print_num(int n);
+int	ft_print_unsigned(unsigned int n);
+int	ft_print_hexadecimal(size_t n, char c);
+int	ft_print_pointer(void *ptr);
+
+#endif

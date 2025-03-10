@@ -5,50 +5,60 @@
 #                                                     +:+ +:+         +:+      #
 #    By: alejaro2 <alejaro2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/03/07 15:18:25 by alejaro2          #+#    #+#              #
-#    Updated: 2025/03/07 18:07:02 by alejaro2         ###   ########.fr        #
+#    Created: 2025/03/10 09:44:57 by alejaro2          #+#    #+#              #
+#    Updated: 2025/03/10 10:10:50 by alejaro2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME_CLIENT = client
 NAME_SERVER = server
 
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g
+
+INCLUDE_DIR = include
 LIBFT_DIR = libft
-PRINTF_DIR = $(LIBFT_DIR)/printf
-
 LIBFT = $(LIBFT_DIR)/libft.a
-LIBFTPRINTF = $(PRINTF_DIR)/libftprintf.a
 
-SERVER_SRC = src/server.c
-SERVER_OBJ = $(SERVER_SRC:.c=.o)
+SRC_DIR = src
+SERVER_SRC = $(SRC_DIR)/server.c
+CLIENT_SRC = $(SRC_DIR)/client.c
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+OBJ_SERVER = $(SERVER_SRC:.c=.o)
+OBJ_CLIENT = $(CLIENT_SRC:.c=.o)
 
+# Colores para la terminal
+GREEN = \033[0;32m
+RED = \033[0;31m
+RESET = \033[0m
 
-all: libft ft_printf $(NAME_SERVER)
+all: $(LIBFT) $(NAME_SERVER) $(NAME_CLIENT)
 
-libft:
+$(LIBFT):
 	@make -C $(LIBFT_DIR)
 
-ft_printf: libft
-	@make -C $(PRINTF_DIR)
-
-$(NAME_SERVER): $(SERVER_OBJ) $(LIBFTPRINTF)
-	$(CC) $(CFLAGS) $(SERVER_OBJ) -L$(PRINTF_DIR) -lftprintf -o $(NAME_SERVER)
-
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@echo "$(GREEN)Compilando: $<$(RESET)"
+	@$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
+
+$(NAME_SERVER): $(OBJ_SERVER) $(LIBFT)
+	@$(CC) $(CFLAGS) -I$(INCLUDE_DIR) $(OBJ_SERVER) -L$(LIBFT_DIR) -lft -o $(NAME_SERVER)
+	@echo "$(GREEN)Servidor compilado correctamente!$(RESET)"
+
+$(NAME_CLIENT): $(OBJ_CLIENT) $(LIBFT)
+	@$(CC) $(CFLAGS) -I$(INCLUDE_DIR) $(OBJ_CLIENT) -L$(LIBFT_DIR) -lft -o $(NAME_CLIENT)
+	@echo "$(GREEN)Cliente compilado correctamente!$(RESET)"
 
 clean:
-	@make -C $(PRINTF_DIR) clean
 	@make -C $(LIBFT_DIR) clean
-	@rm -f $(SERVER_OBJ)
+	@rm -f $(OBJ_SERVER) $(OBJ_CLIENT)
+	@echo "$(RED)Objetos eliminados!$(RESET)"
 
 fclean: clean
-	@make -C $(PRINTF_DIR) fclean
 	@make -C $(LIBFT_DIR) fclean
-	@rm -f $(NAME_SERVER)
+	@rm -f $(NAME_SERVER) $(NAME_CLIENT)
+	@echo "$(RED)Ejecutables eliminados!$(RESET)"
 
 re: fclean all
 
-.PHONY: all libft ft_printf clean fclean re
+.PHONY: all clean fclean re
