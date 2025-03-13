@@ -6,7 +6,7 @@
 /*   By: alejaro2 <alejaro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:58:56 by alejaro2          #+#    #+#             */
-/*   Updated: 2024/10/21 20:23:02 by alejaro2         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:25:54 by alejaro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,4 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	new[i] = '\0';
 	return (new);
-}
-
-int main(void)
-{
-	char salu[] = "hola buenos dias";
-	int d = 5;
-	printf("substring: %s", ft_substr(salu, d, 6));
 }
